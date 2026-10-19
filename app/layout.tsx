@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -106,18 +107,38 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`dark ${inter.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/assets/aenswer-logo.jpg" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
+              try {
+                var t = localStorage.getItem('aenswer-theme');
+                if (t === 'light') {
+                  document.documentElement.classList.add('light');
+                  document.documentElement.classList.remove('dark');
+                } else {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.classList.remove('light');
+                }
+              } catch (e) {
+                document.documentElement.classList.add('dark');
+              }
+            })();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-navy-950 text-white antialiased selection:bg-gold selection:text-navy-950">
-        <Navbar />
-        <main className="flex-1 pt-20">{children}</main>
-        <Footer />
+      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-navy-950 dark:text-white transition-colors duration-200 antialiased selection:bg-gold selection:text-navy-950">
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1 pt-20">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

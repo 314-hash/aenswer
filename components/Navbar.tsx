@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { mainNavItems } from '@/data/navigation';
-import { BrandLogoMark } from './PhilippineSunEmblem';
+import { BrandLogo } from './BrandLogo';
+import { ThemeToggle } from './ThemeToggle';
 import { Menu, X, ChevronDown, ArrowRight, Sparkles } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -31,19 +32,19 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-navy-950/90 backdrop-blur-md border-b border-gold/15 shadow-xl shadow-navy-950/50 py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-white/95 dark:bg-navy-950/95 backdrop-blur-md border-b border-slate-200 dark:border-gold/15 shadow-lg shadow-slate-900/5 dark:shadow-navy-950/60 py-3'
+          : 'bg-transparent py-4 sm:py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo with official /assets/aenswer-logo.jpg */}
           <Link
             href="/"
-            className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition-transform hover:scale-105"
+            className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-xl transition-transform hover:scale-105 group"
             aria-label="Aenswer Digital Solutions Home"
           >
-            <BrandLogoMark />
+            <BrandLogo size="md" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -66,8 +67,8 @@ export const Navbar: React.FC = () => {
                       type="button"
                       className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
                         isActive
-                          ? 'text-gold bg-navy-800/80 border border-gold/25'
-                          : 'text-mutedgray-light hover:text-white hover:bg-navy-800/50'
+                          ? 'text-techblue dark:text-gold bg-techblue/10 dark:bg-navy-800/80 border border-techblue/20 dark:border-gold/25 font-bold'
+                          : 'text-slate-700 hover:text-slate-950 hover:bg-slate-100 dark:text-mutedgray-light dark:hover:text-white dark:hover:bg-navy-800/50'
                       }`}
                       aria-expanded={servicesDropdownOpen}
                       aria-haspopup="true"
@@ -75,7 +76,7 @@ export const Navbar: React.FC = () => {
                       <span>{item.label}</span>
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
-                          servicesDropdownOpen ? 'rotate-180 text-gold' : ''
+                          servicesDropdownOpen ? 'rotate-180 text-techblue dark:text-gold' : ''
                         }`}
                       />
                     </button>
@@ -88,8 +89,8 @@ export const Navbar: React.FC = () => {
                           : 'opacity-0 translate-y-2 pointer-events-none'
                       }`}
                     >
-                      <div className="p-3 bg-navy-900 border border-gold/20 rounded-xl shadow-2xl backdrop-blur-xl">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-gold px-3 py-1 border-b border-navy-700/60 mb-1">
+                      <div className="p-3 bg-white dark:bg-navy-900 border border-slate-200 dark:border-gold/20 rounded-2xl shadow-2xl backdrop-blur-xl">
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-techblue dark:text-gold px-3 py-1 border-b border-slate-100 dark:border-navy-700/60 mb-1">
                           Our Core Capabilities
                         </div>
                         <div className="space-y-1">
@@ -97,25 +98,25 @@ export const Navbar: React.FC = () => {
                             <Link
                               key={child.href}
                               href={child.href}
-                              className={`block p-2.5 rounded-lg text-xs transition-all ${
+                              className={`block p-2.5 rounded-xl text-xs transition-all ${
                                 pathname === child.href
-                                  ? 'bg-techblue/20 text-gold border-l-2 border-gold font-semibold'
-                                  : 'text-mutedgray-light hover:text-white hover:bg-navy-800'
+                                  ? 'bg-techblue/10 dark:bg-techblue/20 text-techblue dark:text-gold border-l-2 border-techblue dark:border-gold font-semibold'
+                                  : 'text-slate-700 hover:text-slate-950 hover:bg-slate-50 dark:text-mutedgray-light dark:hover:text-white dark:hover:bg-navy-800'
                               }`}
                             >
-                              <div className="font-medium text-white">{child.label}</div>
+                              <div className="font-semibold text-slate-900 dark:text-white">{child.label}</div>
                               {child.desc && (
-                                <div className="text-[11px] text-mutedgray mt-0.5 line-clamp-1">
+                                <div className="text-[11px] text-slate-500 dark:text-mutedgray mt-0.5 line-clamp-1">
                                   {child.desc}
                                 </div>
                               )}
                             </Link>
                           ))}
                         </div>
-                        <div className="mt-2 pt-2 border-t border-navy-700/60">
+                        <div className="mt-2 pt-2 border-t border-slate-100 dark:border-navy-700/60">
                           <Link
                             href="/services"
-                            className="flex items-center justify-between text-xs font-semibold text-gold hover:text-white px-2 py-1 transition-colors"
+                            className="flex items-center justify-between text-xs font-semibold text-techblue dark:text-gold hover:underline px-2 py-1 transition-colors"
                           >
                             <span>View All Services</span>
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -133,8 +134,8 @@ export const Navbar: React.FC = () => {
                   href={item.href}
                   className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
                     isActive
-                      ? 'text-gold bg-navy-800/80 border border-gold/25'
-                      : 'text-mutedgray-light hover:text-white hover:bg-navy-800/50'
+                      ? 'text-techblue dark:text-gold bg-techblue/10 dark:bg-navy-800/80 border border-techblue/20 dark:border-gold/25 font-bold'
+                      : 'text-slate-700 hover:text-slate-950 hover:bg-slate-100 dark:text-mutedgray-light dark:hover:text-white dark:hover:bg-navy-800/50'
                   }`}
                 >
                   {item.label}
@@ -143,8 +144,11 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Desktop Right CTA */}
+          {/* Desktop Right: Theme Toggle & Primary CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            {/* Theme Toggle Button */}
+            <ThemeToggle />
+
             <Link
               href="/contact"
               className="relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-navy-950 bg-gradient-to-r from-gold via-gold-400 to-gold rounded-xl shadow-md hover:shadow-gold/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border border-gold-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gold"
@@ -155,12 +159,14 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center lg:hidden">
+          {/* Mobile Right: Theme Toggle & Hamburger */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 text-mutedgray hover:text-white hover:bg-navy-800 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              className="p-2.5 text-slate-700 hover:text-slate-900 dark:text-mutedgray dark:hover:text-white hover:bg-slate-100 dark:hover:bg-navy-800 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -176,29 +182,29 @@ export const Navbar: React.FC = () => {
           mobileMenuOpen ? 'max-h-[90vh] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="px-4 pt-3 pb-6 space-y-1 bg-navy-950/95 backdrop-blur-2xl border-b border-gold/20 shadow-2xl">
+        <div className="px-4 pt-3 pb-6 space-y-1 bg-white/95 dark:bg-navy-950/95 backdrop-blur-2xl border-b border-slate-200 dark:border-gold/20 shadow-2xl">
           {mainNavItems.map((item) => (
             <div key={item.label}>
               <Link
                 href={item.href}
-                className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                className={`block px-3 py-2.5 rounded-xl text-base font-medium transition-colors ${
                   pathname === item.href
-                    ? 'text-gold bg-navy-800 font-bold border-l-4 border-gold'
-                    : 'text-mutedgray-light hover:text-white hover:bg-navy-900'
+                    ? 'text-techblue dark:text-gold bg-slate-100 dark:bg-navy-800 font-bold border-l-4 border-techblue dark:border-gold'
+                    : 'text-slate-700 dark:text-mutedgray-light hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-navy-900'
                 }`}
               >
                 {item.label}
               </Link>
               {item.children && (
-                <div className="pl-4 py-1 space-y-1 border-l border-navy-800 ml-3 mt-1">
+                <div className="pl-4 py-1 space-y-1 border-l border-slate-200 dark:border-navy-800 ml-3 mt-1">
                   {item.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className={`block px-3 py-1.5 rounded-md text-xs transition-colors ${
+                      className={`block px-3 py-1.5 rounded-lg text-xs transition-colors ${
                         pathname === child.href
-                          ? 'text-gold font-semibold'
-                          : 'text-mutedgray hover:text-white'
+                          ? 'text-techblue dark:text-gold font-semibold'
+                          : 'text-slate-600 dark:text-mutedgray hover:text-slate-900 dark:hover:text-white'
                       }`}
                     >
                       {child.label}
@@ -209,7 +215,7 @@ export const Navbar: React.FC = () => {
             </div>
           ))}
 
-          <div className="pt-4 mt-2 border-t border-navy-800">
+          <div className="pt-4 mt-2 border-t border-slate-200 dark:border-navy-800 flex flex-col gap-2.5">
             <Link
               href="/contact"
               className="flex items-center justify-center gap-2 w-full py-3 text-center text-sm font-bold text-navy-950 bg-gold rounded-xl shadow-lg hover:bg-gold-400 transition-colors"

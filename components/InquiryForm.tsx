@@ -134,40 +134,40 @@ export const InquiryForm: React.FC = () => {
 
   if (submissionSuccess) {
     return (
-      <div className="p-8 sm:p-12 rounded-3xl bg-navy-900 border-2 border-gold/40 shadow-2xl text-center max-w-2xl mx-auto">
-        <div className="w-16 h-16 rounded-full bg-gold/15 text-gold border border-gold/40 flex items-center justify-center mx-auto mb-6">
+      <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-navy-900 border-2 border-gold/40 shadow-2xl text-center max-w-2xl mx-auto transition-colors">
+        <div className="w-16 h-16 rounded-full bg-gold/20 text-gold-700 dark:text-gold border border-gold/40 flex items-center justify-center mx-auto mb-6">
           <CheckCircle className="w-8 h-8" />
         </div>
-        <span className="text-xs font-bold uppercase tracking-widest text-gold">
+        <span className="text-xs font-bold uppercase tracking-widest text-techblue dark:text-gold">
           Inquiry Successfully Logged
         </span>
-        <h3 className="text-2xl sm:text-3xl font-bold text-white mt-2 mb-3">
+        <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-2 mb-3">
           Salamat! We Received Your Project Brief.
         </h3>
-        <p className="text-sm text-mutedgray-light leading-relaxed max-w-md mx-auto">
+        <p className="text-sm text-slate-600 dark:text-mutedgray-light leading-relaxed max-w-md mx-auto">
           Our engineering and design leads will review your requirements and prepare a transparent proposal and milestone estimate.
         </p>
 
         {/* Reference Code Card */}
-        <div className="mt-6 p-4 rounded-xl bg-navy-950 border border-gold/25 inline-block text-left">
-          <div className="text-[10px] font-semibold uppercase text-mutedgray">
+        <div className="mt-6 p-4 rounded-xl bg-slate-100 dark:bg-navy-950 border border-gold/30 inline-block text-left">
+          <div className="text-[10px] font-semibold uppercase text-slate-500 dark:text-mutedgray">
             Your Tracking Reference ID:
           </div>
-          <div className="text-lg font-mono font-bold text-gold tracking-wider mt-0.5">
+          <div className="text-lg font-mono font-bold text-techblue dark:text-gold tracking-wider mt-0.5">
             {referenceId}
           </div>
-          <div className="text-[11px] text-mutedgray mt-1">
+          <div className="text-[11px] text-slate-500 dark:text-mutedgray mt-1">
             Keep this code for any direct correspondence via email or chat.
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-navy-800 text-xs text-mutedgray space-y-2">
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-navy-800 text-xs text-slate-600 dark:text-mutedgray space-y-2">
           <p>
-            Standard response window: <strong className="text-white">Within 24 to 48 business hours</strong>.
+            Standard response window: <strong className="text-slate-900 dark:text-white">Within 24 to 48 business hours</strong>.
           </p>
           <p>
             Prefer direct instant messaging? Reach out to us at{' '}
-            <a href="mailto:inquiries@aenswer.ph" className="text-gold hover:underline">
+            <a href="mailto:inquiries@aenswer.ph" className="text-techblue dark:text-gold hover:underline font-bold">
               inquiries@aenswer.ph
             </a>
           </p>
@@ -193,7 +193,7 @@ export const InquiryForm: React.FC = () => {
                 websiteUrl: '',
               });
             }}
-            className="text-xs font-bold text-mutedgray-light hover:text-white underline underline-offset-4"
+            className="text-xs font-bold text-slate-700 dark:text-mutedgray-light hover:text-techblue dark:hover:text-white underline underline-offset-4"
           >
             Submit Another Inquiry
           </button>
@@ -205,7 +205,7 @@ export const InquiryForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 sm:p-10 rounded-3xl bg-navy-900/90 border border-gold/25 shadow-2xl relative"
+      className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-navy-900/90 border border-slate-200 dark:border-gold/25 shadow-xl dark:shadow-2xl relative transition-colors"
       noValidate
     >
       {/* Honeypot field (hidden from humans, filled by spam bots) */}
@@ -223,8 +223,8 @@ export const InquiryForm: React.FC = () => {
       </div>
 
       {errorMessage && (
-        <div className="mb-6 p-4 rounded-xl bg-accentred/15 border border-accentred/40 flex items-start gap-3 text-xs text-red-200">
-          <AlertCircle className="w-4 h-4 text-accentred shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 rounded-xl bg-accentred/15 border border-accentred/40 flex items-start gap-3 text-xs text-accentred">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -232,7 +232,7 @@ export const InquiryForm: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
         {/* Full Name */}
         <div>
-          <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Full Name <span className="text-accentred">*</span>
           </label>
           <input
@@ -243,7 +243,7 @@ export const InquiryForm: React.FC = () => {
             value={formData.fullName}
             onChange={handleChange}
             placeholder="Juan dela Cruz"
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           />
           {fieldErrors.fullName && (
             <p className="text-[11px] text-accentred mt-1">{fieldErrors.fullName[0]}</p>
@@ -252,7 +252,7 @@ export const InquiryForm: React.FC = () => {
 
         {/* Business Name */}
         <div>
-          <label htmlFor="businessName" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="businessName" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Business or Organization
           </label>
           <input
@@ -262,7 +262,7 @@ export const InquiryForm: React.FC = () => {
             value={formData.businessName}
             onChange={handleChange}
             placeholder="e.g. Manila Tech Studio, SME Cafe"
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           />
         </div>
       </div>
@@ -270,7 +270,7 @@ export const InquiryForm: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Email Address <span className="text-accentred">*</span>
           </label>
           <input
@@ -281,7 +281,7 @@ export const InquiryForm: React.FC = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="juan@yourcompany.com"
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           />
           {fieldErrors.email && (
             <p className="text-[11px] text-accentred mt-1">{fieldErrors.email[0]}</p>
@@ -290,7 +290,7 @@ export const InquiryForm: React.FC = () => {
 
         {/* Country */}
         <div>
-          <label htmlFor="country" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="country" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Country <span className="text-accentred">*</span>
           </label>
           <input
@@ -301,7 +301,7 @@ export const InquiryForm: React.FC = () => {
             value={formData.country}
             onChange={handleChange}
             placeholder="Philippines, USA, Singapore, etc."
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           />
           {fieldErrors.country && (
             <p className="text-[11px] text-accentred mt-1">{fieldErrors.country[0]}</p>
@@ -312,7 +312,7 @@ export const InquiryForm: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
         {/* Preferred Contact Method */}
         <div>
-          <label htmlFor="contactMethod" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="contactMethod" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Preferred Contact Method <span className="text-accentred">*</span>
           </label>
           <select
@@ -320,7 +320,7 @@ export const InquiryForm: React.FC = () => {
             name="contactMethod"
             value={formData.contactMethod}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           >
             <option value="Email">Email</option>
             <option value="WhatsApp">WhatsApp</option>
@@ -331,7 +331,7 @@ export const InquiryForm: React.FC = () => {
 
         {/* Requested Service */}
         <div>
-          <label htmlFor="serviceRequested" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="serviceRequested" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Requested Service <span className="text-accentred">*</span>
           </label>
           <select
@@ -339,7 +339,7 @@ export const InquiryForm: React.FC = () => {
             name="serviceRequested"
             value={formData.serviceRequested}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           >
             <option value="Web Design & Development">Web Design & Development (Business Website)</option>
             <option value="Business Landing Page">High-Converting Landing Page</option>
@@ -355,7 +355,7 @@ export const InquiryForm: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
         {/* Budget Range */}
         <div>
-          <label htmlFor="budgetRange" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="budgetRange" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Estimated Budget Range <span className="text-accentred">*</span>
           </label>
           <select
@@ -363,7 +363,7 @@ export const InquiryForm: React.FC = () => {
             name="budgetRange"
             value={formData.budgetRange}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           >
             <option value="Under ₱10,000 ($200)">Under ₱10,000 ($200 USD)</option>
             <option value="₱10,000 – ₱25,000 ($200 – $500)">₱10,000 – ₱25,000 ($200 – $500 USD)</option>
@@ -375,7 +375,7 @@ export const InquiryForm: React.FC = () => {
 
         {/* Desired Timeline */}
         <div>
-          <label htmlFor="desiredTimeline" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+          <label htmlFor="desiredTimeline" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
             Desired Timeline <span className="text-accentred">*</span>
           </label>
           <select
@@ -383,7 +383,7 @@ export const InquiryForm: React.FC = () => {
             name="desiredTimeline"
             value={formData.desiredTimeline}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
           >
             <option value="Urgent (1 – 2 Weeks)">Urgent (1 – 2 Weeks)</option>
             <option value="Standard (2 – 4 Weeks)">Standard (2 – 4 Weeks)</option>
@@ -395,7 +395,7 @@ export const InquiryForm: React.FC = () => {
 
       {/* Project Description */}
       <div className="mb-5">
-        <label htmlFor="projectDescription" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+        <label htmlFor="projectDescription" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
           Project Goals & Description <span className="text-accentred">*</span>
         </label>
         <textarea
@@ -406,7 +406,7 @@ export const InquiryForm: React.FC = () => {
           value={formData.projectDescription}
           onChange={handleChange}
           placeholder="Please describe what your business does, what problem you want to solve, and any specific feature requirements..."
-          className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
         ></textarea>
         {fieldErrors.projectDescription && (
           <p className="text-[11px] text-accentred mt-1">{fieldErrors.projectDescription[0]}</p>
@@ -415,7 +415,7 @@ export const InquiryForm: React.FC = () => {
 
       {/* Optional Reference URL */}
       <div className="mb-6">
-        <label htmlFor="referenceUrl" className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-1.5">
+        <label htmlFor="referenceUrl" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-1.5">
           Reference URL or Existing Website (Optional)
         </label>
         <input
@@ -425,7 +425,7 @@ export const InquiryForm: React.FC = () => {
           value={formData.referenceUrl}
           onChange={handleChange}
           placeholder="https://yourbrand.com or competitor example"
-          className="w-full px-4 py-3 rounded-xl bg-navy-950 border border-navy-700 text-sm text-white placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-300 dark:border-navy-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-navy-600 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
         />
         {fieldErrors.referenceUrl && (
           <p className="text-[11px] text-accentred mt-1">{fieldErrors.referenceUrl[0]}</p>
@@ -440,11 +440,11 @@ export const InquiryForm: React.FC = () => {
             name="privacyConsent"
             checked={formData.privacyConsent}
             onChange={handleChange}
-            className="mt-1 rounded text-gold focus:ring-gold bg-navy-950 border-navy-700"
+            className="mt-1 rounded text-gold focus:ring-gold bg-white dark:bg-navy-950 border-slate-300 dark:border-navy-700"
           />
-          <span className="text-xs text-mutedgray leading-relaxed">
+          <span className="text-xs text-slate-600 dark:text-mutedgray leading-relaxed">
             I agree that Aenswer Digital Solutions may process my submitted project details in accordance with the{' '}
-            <a href="/privacy" target="_blank" className="text-gold underline hover:text-white">
+            <a href="/privacy" target="_blank" className="text-techblue dark:text-gold underline hover:text-slate-950 dark:hover:text-white">
               Privacy Policy
             </a>{' '}
             (Philippine Data Privacy Act RA 10173 compliant) to prepare a proposal and quotation.
@@ -476,7 +476,7 @@ export const InquiryForm: React.FC = () => {
       </button>
 
       {/* Security notice */}
-      <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-mutedgray">
+      <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-slate-500 dark:text-mutedgray">
         <Lock className="w-3.5 h-3.5 text-techblue" />
         <span>Strict privacy guarantee: We never share or sell client contact details.</span>
       </div>

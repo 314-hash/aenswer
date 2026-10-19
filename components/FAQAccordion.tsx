@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { faqsData } from '@/data/faqs';
-import { ChevronDown, HelpCircle, MessageSquare } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export const FAQAccordion: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -21,8 +21,8 @@ export const FAQAccordion: React.FC = () => {
             key={index}
             className={`rounded-2xl transition-all duration-200 border ${
               isOpen
-                ? 'bg-navy-900 border-gold/40 shadow-lg shadow-navy-950/60'
-                : 'bg-navy-900/60 border-navy-800 hover:border-navy-700 hover:bg-navy-900/80'
+                ? 'bg-amber-50/50 dark:bg-navy-900 border-gold/60 dark:border-gold/40 shadow-md dark:shadow-lg'
+                : 'bg-white dark:bg-navy-900/60 border-slate-200 dark:border-navy-800 hover:border-slate-300 dark:hover:border-navy-700 hover:bg-slate-50 dark:hover:bg-navy-900/80 shadow-xs'
             }`}
           >
             <button
@@ -33,21 +33,21 @@ export const FAQAccordion: React.FC = () => {
             >
               <div className="flex items-center gap-3">
                 <HelpCircle className={`w-4 h-4 shrink-0 transition-colors ${
-                  isOpen ? 'text-gold' : 'text-techblue'
+                  isOpen ? 'text-amber-600 dark:text-gold' : 'text-techblue'
                 }`} />
-                <span className="text-sm sm:text-base font-bold text-white">
+                <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                   {faq.question}
                 </span>
               </div>
               <ChevronDown
-                className={`w-5 h-5 text-mutedgray shrink-0 transition-transform duration-200 ${
-                  isOpen ? 'rotate-180 text-gold' : ''
+                className={`w-5 h-5 text-slate-400 dark:text-mutedgray shrink-0 transition-transform duration-200 ${
+                  isOpen ? 'rotate-180 text-amber-600 dark:text-gold' : ''
                 }`}
               />
             </button>
 
             {isOpen && (
-              <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-mutedgray-light leading-relaxed border-t border-navy-800/80 mt-1">
+              <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-mutedgray-light leading-relaxed border-t border-slate-200 dark:border-navy-800/80 mt-1">
                 {faq.answer}
               </div>
             )}

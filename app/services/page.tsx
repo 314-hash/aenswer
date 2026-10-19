@@ -25,17 +25,17 @@ export default function ServicesPage() {
   };
 
   return (
-    <div className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-colors">
       {/* Page Header */}
       <div className="text-center max-w-3xl mx-auto mb-20">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-bold uppercase tracking-wider mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-navy-900 border border-gold/40 text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-gold shadow-xs mb-4">
           <PhilippineSunEmblem size={16} />
           <span>Full-Spectrum Digital Capabilities</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-black text-slate-950 dark:text-white tracking-tight">
           Services Engineered for <span className="text-gradient-gold">Real Business Results</span>
         </h1>
-        <p className="text-base text-mutedgray mt-4 leading-relaxed">
+        <p className="text-base text-slate-600 dark:text-mutedgray mt-4 leading-relaxed">
           Whether you need a high-converting website, an AI workflow that cuts manual hours, or a secure smart contract on EVM chains, we deliver with clear milestones and full source code ownership.
         </p>
       </div>
@@ -44,7 +44,6 @@ export default function ServicesPage() {
       <div className="space-y-16">
         {servicesData.map((service, index) => {
           const Icon = iconMap[service.icon] || Code;
-          const isEven = index % 2 === 0;
           const formattedPrice = service.startingPrice.custom
             ? 'Custom Quotation'
             : `Starting from ₱${service.startingPrice.PHP.toLocaleString()} / $${service.startingPrice.USD} USD`;
@@ -53,38 +52,36 @@ export default function ServicesPage() {
             <div
               key={service.id}
               id={service.slug}
-              className={`p-8 sm:p-10 rounded-3xl bg-navy-900/80 border border-navy-800 hover:border-gold/30 transition-all duration-300 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start ${
-                !isEven ? 'lg:bg-navy-900/40' : ''
-              }`}
+              className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-navy-900/80 border border-slate-200 dark:border-navy-800 hover:border-gold/40 transition-all duration-300 shadow-sm hover:shadow-xl dark:shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
             >
               {/* Left Details */}
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-navy-950 border border-navy-800 text-gold">
+                  <div className="p-3 rounded-xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 text-techblue dark:text-gold shadow-xs">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-techblue-300">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-techblue dark:text-techblue-300">
                       Capability 0{index + 1}
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white mt-0.5">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-0.5">
                       {service.title}
                     </h2>
                   </div>
                 </div>
 
-                <p className="text-sm font-semibold text-gold/90">{service.subtitle}</p>
-                <p className="text-sm text-mutedgray leading-relaxed">{service.fullDesc}</p>
+                <p className="text-sm font-semibold text-techblue dark:text-gold/90">{service.subtitle}</p>
+                <p className="text-sm text-slate-600 dark:text-mutedgray leading-relaxed">{service.fullDesc}</p>
 
                 {/* Benefits */}
                 <div className="pt-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">
                     Business Benefits:
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-mutedgray-light">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700 dark:text-mutedgray-light">
                     {service.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                         <span>{benefit}</span>
                       </div>
                     ))}
@@ -93,11 +90,11 @@ export default function ServicesPage() {
 
                 {/* Tech Stack */}
                 <div className="pt-2 flex flex-wrap items-center gap-2">
-                  <span className="text-xs text-mutedgray font-semibold">Technologies:</span>
+                  <span className="text-xs text-slate-500 dark:text-mutedgray font-semibold">Technologies:</span>
                   {service.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-navy-950 text-gold border border-navy-800"
+                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-100 dark:bg-navy-950 text-slate-800 dark:text-gold border border-slate-200 dark:border-navy-800"
                     >
                       {tech}
                     </span>
@@ -106,27 +103,27 @@ export default function ServicesPage() {
               </div>
 
               {/* Right Summary Box */}
-              <div className="lg:col-span-5 p-6 rounded-2xl bg-navy-950 border border-navy-800 space-y-4">
+              <div className="lg:col-span-5 p-6 rounded-2xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 space-y-4 shadow-xs">
                 <div>
-                  <div className="text-[11px] uppercase tracking-wider text-mutedgray font-bold">
+                  <div className="text-[11px] uppercase tracking-wider text-slate-500 dark:text-mutedgray font-bold">
                     Investment Baseline
                   </div>
-                  <div className="text-xl font-bold text-white mt-1">{formattedPrice}</div>
+                  <div className="text-xl font-bold text-slate-900 dark:text-white mt-1">{formattedPrice}</div>
                 </div>
 
-                <div className="text-xs text-mutedgray">
-                  <span className="font-semibold text-white">Estimated Delivery:</span>{' '}
+                <div className="text-xs text-slate-600 dark:text-mutedgray">
+                  <span className="font-semibold text-slate-900 dark:text-white">Estimated Delivery:</span>{' '}
                   {service.deliveryTime}
                 </div>
 
-                <div className="pt-3 border-t border-navy-800">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-mutedgray-light mb-2">
+                <div className="pt-3 border-t border-slate-200 dark:border-navy-800">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-2">
                     Included Deliverables:
                   </div>
-                  <ul className="space-y-1.5 text-xs text-mutedgray">
+                  <ul className="space-y-1.5 text-xs text-slate-600 dark:text-mutedgray">
                     {service.deliverables.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-gold font-bold">•</span>
+                        <span className="text-techblue dark:text-gold font-bold">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -144,7 +141,7 @@ export default function ServicesPage() {
 
                   <Link
                     href={`/${service.slug}`}
-                    className="flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-semibold text-mutedgray-light hover:text-white bg-navy-900 hover:bg-navy-800 border border-navy-800 transition-colors"
+                    className="flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-700 dark:text-mutedgray-light hover:text-slate-950 dark:hover:text-white bg-white dark:bg-navy-900 hover:bg-slate-100 dark:hover:bg-navy-800 border border-slate-200 dark:border-navy-800 transition-colors"
                   >
                     <span>Read Full Service Specification</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -157,11 +154,11 @@ export default function ServicesPage() {
       </div>
 
       {/* Bottom CTA */}
-      <div className="mt-20 p-10 rounded-3xl bg-gradient-to-r from-navy-900 via-navy-850 to-navy-900 border border-gold/30 text-center max-w-4xl mx-auto shadow-2xl">
-        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+      <div className="mt-20 p-10 rounded-3xl bg-gradient-to-r from-slate-100 via-white to-slate-100 dark:from-navy-900 dark:via-navy-850 dark:to-navy-900 border border-slate-200 dark:border-gold/30 text-center max-w-4xl mx-auto shadow-xl">
+        <h3 className="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white mb-2">
           Need a Custom Multi-Service Scope?
         </h3>
-        <p className="text-sm text-mutedgray max-w-xl mx-auto mb-6">
+        <p className="text-sm text-slate-600 dark:text-mutedgray max-w-xl mx-auto mb-6">
           We combine web design, AI chat automation, and social media ad packages into unified milestone agreements with volume pricing.
         </p>
         <Link

@@ -48,30 +48,30 @@ export const CostCalculator: React.FC = () => {
     : `$${totalUSD.toLocaleString()}`;
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-navy-900/90 border border-gold/30 shadow-2xl relative overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-white dark:bg-navy-900/90 border border-slate-200 dark:border-gold/30 shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors">
       {/* Background radial glow */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-techblue/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-navy-800 pb-5 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-navy-800 pb-5 mb-6">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-techblue dark:text-gold">
             <Calculator className="w-4 h-4" />
             <span>Interactive Project Estimator</span>
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">
             Calculate Your Estimated Investment
           </h3>
         </div>
 
         {/* Currency Toggle */}
-        <div className="inline-flex items-center p-1 rounded-xl bg-navy-950 border border-navy-800 shrink-0">
+        <div className="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 shrink-0">
           <button
             type="button"
             onClick={() => setCurrency('PHP')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
               currency === 'PHP'
-                ? 'bg-gold text-navy-950'
-                : 'text-mutedgray hover:text-white'
+                ? 'bg-gold text-navy-950 font-black shadow-xs'
+                : 'text-slate-600 dark:text-mutedgray hover:text-slate-950 dark:hover:text-white'
             }`}
           >
             ₱ PHP
@@ -81,8 +81,8 @@ export const CostCalculator: React.FC = () => {
             onClick={() => setCurrency('USD')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
               currency === 'USD'
-                ? 'bg-techblue text-white'
-                : 'text-mutedgray hover:text-white'
+                ? 'bg-techblue text-white font-black shadow-xs'
+                : 'text-slate-600 dark:text-mutedgray hover:text-slate-950 dark:hover:text-white'
             }`}
           >
             $ USD
@@ -94,7 +94,7 @@ export const CostCalculator: React.FC = () => {
         {/* Left Column: Options */}
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-2.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-2.5">
               1. Select Project Type
             </label>
             <div className="grid grid-cols-1 gap-2">
@@ -111,13 +111,15 @@ export const CostCalculator: React.FC = () => {
                   onClick={() => setProjectType(item.id as any)}
                   className={`flex items-center justify-between p-3 rounded-xl text-xs font-medium text-left transition-all border ${
                     projectType === item.id
-                      ? 'bg-navy-800 text-white border-gold shadow-md'
-                      : 'bg-navy-950/60 text-mutedgray hover:text-white border-navy-800'
+                      ? 'bg-slate-100 dark:bg-navy-800 text-slate-900 dark:text-white border-techblue dark:border-gold shadow-xs font-bold'
+                      : 'bg-slate-50 dark:bg-navy-950/60 text-slate-600 dark:text-mutedgray hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-navy-800'
                   }`}
                 >
                   <span>{item.label}</span>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                    projectType === item.id ? 'bg-gold text-navy-950' : 'bg-navy-800 text-mutedgray'
+                    projectType === item.id
+                      ? 'bg-gold text-navy-950'
+                      : 'bg-slate-200 dark:bg-navy-800 text-slate-700 dark:text-mutedgray'
                   }`}>
                     {item.badge}
                   </span>
@@ -127,35 +129,35 @@ export const CostCalculator: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-mutedgray-light mb-2.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-mutedgray-light mb-2.5">
               2. Optional Add-ons
             </label>
             <div className="space-y-2">
-              <label className="flex items-center justify-between p-3 rounded-xl bg-navy-950/60 border border-navy-800 text-xs cursor-pointer hover:border-navy-700">
-                <span className="text-white">Structured Schema & On-Page SEO (+₱2,500 / $75)</span>
+              <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-navy-950/60 border border-slate-200 dark:border-navy-800 text-xs cursor-pointer hover:border-slate-300 dark:hover:border-navy-700 transition-colors">
+                <span className="text-slate-900 dark:text-white font-medium">Structured Schema & On-Page SEO (+₱2,500 / $75)</span>
                 <input
                   type="checkbox"
                   checked={includeSEO}
                   onChange={(e) => setIncludeSEO(e.target.checked)}
-                  className="rounded text-gold focus:ring-gold bg-navy-900 border-navy-700"
+                  className="rounded text-gold focus:ring-gold bg-white dark:bg-navy-900 border-slate-300 dark:border-navy-700"
                 />
               </label>
-              <label className="flex items-center justify-between p-3 rounded-xl bg-navy-950/60 border border-navy-800 text-xs cursor-pointer hover:border-navy-700">
-                <span className="text-white">AI Lead Inquiry Chatbot Integration (+₱5,000 / $150)</span>
+              <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-navy-950/60 border border-slate-200 dark:border-navy-800 text-xs cursor-pointer hover:border-slate-300 dark:hover:border-navy-700 transition-colors">
+                <span className="text-slate-900 dark:text-white font-medium">AI Lead Inquiry Chatbot Integration (+₱5,000 / $150)</span>
                 <input
                   type="checkbox"
                   checked={includeChatbot}
                   onChange={(e) => setIncludeChatbot(e.target.checked)}
-                  className="rounded text-gold focus:ring-gold bg-navy-900 border-navy-700"
+                  className="rounded text-gold focus:ring-gold bg-white dark:bg-navy-900 border-slate-300 dark:border-navy-700"
                 />
               </label>
-              <label className="flex items-center justify-between p-3 rounded-xl bg-navy-950/60 border border-navy-800 text-xs cursor-pointer hover:border-navy-700">
-                <span className="text-white">GA4 & Meta Conversion Tracking (+₱1,500 / $45)</span>
+              <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-navy-950/60 border border-slate-200 dark:border-navy-800 text-xs cursor-pointer hover:border-slate-300 dark:hover:border-navy-700 transition-colors">
+                <span className="text-slate-900 dark:text-white font-medium">GA4 & Meta Conversion Tracking (+₱1,500 / $45)</span>
                 <input
                   type="checkbox"
                   checked={includeAnalytics}
                   onChange={(e) => setIncludeAnalytics(e.target.checked)}
-                  className="rounded text-gold focus:ring-gold bg-navy-900 border-navy-700"
+                  className="rounded text-gold focus:ring-gold bg-white dark:bg-navy-900 border-slate-300 dark:border-navy-700"
                 />
               </label>
             </div>
@@ -163,38 +165,38 @@ export const CostCalculator: React.FC = () => {
         </div>
 
         {/* Right Column: Instant Calculation & Output */}
-        <div className="flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-b from-navy-950 to-navy-900 border border-gold/20">
+        <div className="flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-b from-slate-100 to-slate-50 dark:from-navy-950 dark:to-navy-900 border border-slate-200 dark:border-gold/20 shadow-xs">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-techblue-300">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-techblue dark:text-techblue-300">
               Estimated Project Total
             </span>
             <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+              <span className="text-4xl sm:text-5xl font-black text-slate-950 dark:text-white tracking-tight">
                 {formattedEstimate}
               </span>
-              <span className="text-xs text-mutedgray">est. total</span>
+              <span className="text-xs text-slate-500 dark:text-mutedgray">est. total</span>
             </div>
 
-            <div className="mt-4 p-3 rounded-xl bg-navy-900/80 border border-navy-800 space-y-1.5 text-xs text-mutedgray-light">
+            <div className="mt-4 p-3 rounded-xl bg-white dark:bg-navy-900/80 border border-slate-200 dark:border-navy-800 space-y-1.5 text-xs text-slate-700 dark:text-mutedgray-light shadow-xs">
               <div className="flex justify-between">
                 <span>Estimated Turnaround:</span>
-                <span className="font-bold text-white">{selectedBase.days}</span>
+                <span className="font-bold text-slate-900 dark:text-white">{selectedBase.days}</span>
               </div>
               <div className="flex justify-between">
                 <span>Code Ownership:</span>
-                <span className="font-bold text-emerald-400">100% Client Owned</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">100% Client Owned</span>
               </div>
               <div className="flex justify-between">
                 <span>Revisions Included:</span>
-                <span className="font-bold text-white">Up to 3 - 4 rounds</span>
+                <span className="font-bold text-slate-900 dark:text-white">Up to 3 - 4 rounds</span>
               </div>
               <div className="flex justify-between">
                 <span>Post-launch Support:</span>
-                <span className="font-bold text-gold">14 – 30 Days Free</span>
+                <span className="font-bold text-amber-600 dark:text-gold">14 – 30 Days Free</span>
               </div>
             </div>
 
-            <p className="text-[11px] text-mutedgray mt-4 leading-relaxed">
+            <p className="text-[11px] text-slate-500 dark:text-mutedgray mt-4 leading-relaxed">
               *Estimates are calculated based on standard scope requirements. You will receive an exact formal quotation with milestone guarantees upon submitting your project brief.
             </p>
           </div>
