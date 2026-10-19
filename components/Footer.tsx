@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { footerLinks } from '@/data/navigation';
 import { BrandLogo } from './BrandLogo';
 import { PhilippineSunEmblem } from './PhilippineSunEmblem';
@@ -14,7 +15,24 @@ export const Footer: React.FC = () => {
       {/* Background glow & subtle sunburst in dark mode */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-40 bg-ph-sunburst pointer-events-none opacity-40 dark:opacity-40 opacity-10"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
+        {/* ========================================================
+            OFFICIAL AENSWER BRAND BANNER (Displayed on Every Page)
+        ======================================================== */}
+        <div className="mb-14 relative rounded-2xl sm:rounded-3xl overflow-hidden border border-gold/40 shadow-xl dark:shadow-2xl bg-navy-950 group">
+          <div className="relative aspect-[16/5] sm:aspect-[3.2/1] w-full max-h-72">
+            <Image
+              src="/assets/aenswer-banner.png"
+              alt="Aenswer Digital Solutions Official Banner - May Problema sa Digital? May Aenswer."
+              fill
+              className="object-cover object-center group-hover:scale-[1.01] transition-transform duration-500"
+            />
+          </div>
+        </div>
+
+        {/* ========================================================
+            FOOTER COLUMNS & NAVIGATION
+        ======================================================== */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-12">
           {/* Brand Column with official /assets/aenswer-logo.jpg */}
           <div className="lg:col-span-2 space-y-4">
