@@ -58,8 +58,39 @@ blogPosts.forEach((post) => {
   assert(post.slug && post.title && post.content.length > 0, `Post "${post.title}" has valid slug and content`);
 });
 
-// 4. Zod Inquiry Schema Tests
-console.log('\n--- 4. Testing Inquiry Schema Validation ---');
+// 4. Portfolio Projects Verification
+import { portfolioProjects } from '../data/portfolio.ts';
+console.log('\n--- 4. Testing Portfolio Projects ---');
+assert(portfolioProjects.length >= 12, `At least 12 portfolio items exist (Found ${portfolioProjects.length})`);
+
+const expectedUrls = [
+  'https://www.exjanai.com/',
+  'https://bandiq-dapp.vercel.app/',
+  'https://pisochain.com/',
+  'https://pinoy-shop-style.vercel.app/',
+  'https://web-rescue-ai.vercel.app/',
+  'https://warehouse-management-system-wms.vercel.app/',
+  'https://admin-blond-seven-66.vercel.app/',
+  'https://ai-control-center-three.vercel.app/',
+  'https://pinoy-global.vercel.app/',
+  'https://finved.vercel.app/',
+  'https://pms-enterprise.vercel.app/',
+  'https://titos-pizza.vercel.app/'
+];
+
+expectedUrls.forEach((url) => {
+  const match = portfolioProjects.find((p) => p.demoUrl === url);
+  assert(match, `Portfolio includes requested live URL: ${url}`);
+  if (match) {
+    assert(!!match.imageUrl, `Project ${match.title} has an image preview configured`);
+  }
+});
+
+const ytProject = portfolioProjects.find((p) => p.videoEmbedUrl?.includes('gLW_HatyeWQ'));
+assert(ytProject, 'YouTube Short (gLW_HatyeWQ) is configured in portfolio');
+
+// 5. Zod Inquiry Schema Tests
+console.log('\n--- 5. Testing Inquiry Schema Validation ---');
 
 // Valid inquiry
 const validPayload = {

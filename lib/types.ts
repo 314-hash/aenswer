@@ -54,6 +54,8 @@ export interface PortfolioProject {
   isConceptOrDemo: boolean;
   demoUrl?: string;
   featured?: boolean;
+  imageUrl?: string;
+  videoEmbedUrl?: string;
 }
 
 export interface FAQItem {
