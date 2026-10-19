@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 7, 20, 38;
+  --background-end-rgb: 4, 11, 21;
+}
+
+@layer base {
+  body {
+    color: #FFFFFF;
+    background: #071426;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #F5C76B;
+    color: #071426;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #071426;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b3c69;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5C76B;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(16, 38, 68, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 199, 107, 0.12);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(23, 105, 224, 0.12);
+  border-color: rgba(245, 199, 107, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(7, 20, 38, 0.8), 0 0 20px rgba(245, 199, 107, 0.1);
+}
+
+/* Subtle Philippine Sun Pattern & Banig Micro-grid */
+.ph-pattern-bg {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(245, 199, 107, 0.12) 0%, rgba(23, 105, 224, 0.05) 35%, transparent 70%),
+    linear-gradient(rgba(245, 199, 107, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 199, 107, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+/* Gold Gradient Text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFF0CA 0%, #F5C76B 50%, #D49E2E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tech Blue Gradient Text */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #bed6fb 0%, #1769E0 60%, #0f4293 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Philippine Tricolor Ribbon Accent */
+.ph-ribbon {
+  height: 3px;
+  background: linear-gradient(90deg, #F5C76B 0%, #1769E0 50%, #D62839 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
